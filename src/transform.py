@@ -1,0 +1,7 @@
+def transform_data(df):
+    
+    df = df.copy()
+
+    df.columns = df.columns.str.lower().str.strip()
+
+    return df

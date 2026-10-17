@@ -1,0 +1,14 @@
+
+pandas==3.0.6
+requests==2.34.2
+sqlalchemy==2.0.43
+psycopg[binary]==3.3.6
+pandera==0.33.1
+python-dotenv==1.1.1
+openai==1.109.1
+chromadb==1.5.9
+sentence-transformers==6.1.0
+fastapi==0.142.2
+uvicorn[standard]==0.35.0
+streamlit==1.64.0
+pytest==8.4.2

@@ -1,0 +1,82 @@
+DE_Assistant/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── src/
+│   ├── extract.py
+│   ├── transform.py
+│   ├── validate.py        ← add
+│   ├── load.py
+│   └── main.py
+│
+├── airflow/               ← add later
+│   └── dags/
+│       └── pipeline_dag.py
+│
+├── agent/                 ← add later
+│   ├── agent.py
+│   └── tools/
+│       ├── airflow_tool.py
+│       ├── sql_tool.py
+│       └── rag_tool.py
+│
+├── docs/                  ← RAG knowledge
+│   ├── troubleshooting.md
+│   ├── data_quality.md
+│   └── pipeline_guide.md
+│
+├── tests/
+│
+├── requirements.txt
+├── docker-compose.yml     ← add when we containerize
+└── README.md
+
+
+
+
+
+
+
+
+
+
+User uploads file
+       │
+       ▼
+   Extract
+       │
+       ▼
+   Transform
+       │
+       ▼
+   Validate
+       │
+       ├──────────────► SUCCESS ──► Load into PostgreSQL
+       │
+       ▼
+     FAILURE
+       │
+       ▼
+   Airflow records:
+   • failed task
+   • error log
+   • stack trace
+   • row counts
+   • validation results
+       │
+       ▼
+   AI Investigation Agent
+       │
+       ├──► Airflow Tool
+       │      └── get failure/logs
+       │
+       ├──► SQL Tool
+       │      └── investigate PostgreSQL
+       │
+       └──► RAG Tool
+              └── search technical docs
+       │
+       ▼
+   Root Cause Analysis
