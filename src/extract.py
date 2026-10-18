@@ -5,4 +5,5 @@ def extract_data(file_path):
     print(file_path)
     df = pd.read_csv(file_path)
     print(df.head())
+    print("extract end")
     return df

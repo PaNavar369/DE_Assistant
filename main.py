@@ -52,5 +52,19 @@ async def upload_file(file: UploadFile = File(...)):
 async def run_pipeline(filename:str):
     print("enter this run route")
     print(filename)
+    file_path = UPLOAD_DIR / filename
+    print(file_path)
+    if not file_path.is_file():
+        raise HTTPException(
+            status_code=404,
+            detail=f"Uploaded file not found: {filename}"
+        )
+    else:
+        try:
+            result=execute_pipeline(file_path)
+            return result
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
     
     

@@ -8,9 +8,9 @@ load_dotenv()
 
 
 def load_data(df):
-
+    print("loading started")
     database_url = os.getenv("mysql+pymysql://root:root@localhost:3306/de_assistant")
-
+    print("database connected")
     if not database_url:
         raise ValueError("DATABASE_URL is not configured.")
 
